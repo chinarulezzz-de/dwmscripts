@@ -1,0 +1,4 @@
+#!/bin/sh
+URL='https://www.youtube.com/watch?v=tzBGEqkwCoY'
+youtube-dl -o - $URL | mpv --no-video -
+# End of file

@@ -1,0 +1,6 @@
+#!/bin/sh
+pactl unload-module module-bluetooth-discover
+bluetoothctl <<EOF
+disconnect 16:07:11:0A:4D:C9
+power off
+EOF

@@ -1,0 +1,13 @@
+#!/bin/sh
+# Limit shitfox' memory eating.
+#
+# Add these lines to /etc/rc.local:
+#
+#  # Limit shitfox' memory eating:
+#  USER=$USER
+#  cgcreate -a $USER:$USER -t $USER:$USER -g memory:firefox
+#  echo 2G > /sys/fs/cgroup/memory/firefox/memory.limit_in_bytes
+#  echo 2G > /sys/fs/cgroup/memory/firefox/memory.memsw.limit_in_bytes
+#  echo 2G > /sys/fs/cgroup/memory/firefox/memory.soft_limit_in_bytes
+#
+cgexec -g memory:firefox firefox &

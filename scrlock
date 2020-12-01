@@ -1,0 +1,24 @@
+#!/bin/sh
+# Screenlock wrapper.
+
+# Switch to Latin keyboard layout before starting trollock & password input.
+# To see what index it has, type xkbswitch.  By default, it's 0.
+
+latin_keyboard_layout=0
+current_keyboard_layout=$(xkbswitch)
+
+if [ "$current_keyboard_layout" != "$latin_keyboard_layout" ]; then
+	# switch to Latin layout
+	xkbswitch $latin_keyboard_layout
+fi
+
+# Start locker
+slock
+
+# Restore default (previous) keyboard layout
+xkbswitch $current_keyboard_layout
+
+# start locker daemon
+xautolock -time 5 -locker scrlock.sh &
+
+# End of file

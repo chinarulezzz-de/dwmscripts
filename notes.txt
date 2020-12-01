@@ -1,0 +1,2 @@
+#!/bin/sh
+xterm -class FTerm -title notes.txt -e vim ~/notes.txt

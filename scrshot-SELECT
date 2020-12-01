@@ -1,0 +1,11 @@
+#!/bin/sh
+# Make screenshots via ImageMagick
+
+OUTPUT=${OUTPUT:-$HOME/ScreenRec}
+FORMAT=$(date +%y-%m-%y-%H:%M:%S).png
+
+import -quality 100 -window \
+	$(xwininfo | grep 'Window id:' | cut -d\  -f4) \
+	$OUTPUT/$FORMAT
+
+# End of file

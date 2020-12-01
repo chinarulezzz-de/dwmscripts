@@ -1,0 +1,24 @@
+#!/bin/sh
+
+#!!! Run as root. !!!
+
+USER=me
+BATT=BAT0
+WARN=7
+
+export DISPLAY=:0
+
+if [ "$(cat /sys/class/power_supply/$BATT/capacity)" -lt "$PERC" ]; then
+	BATT_STATUS="$(cat /sys/class/power_supply/$BATT/status)"
+	[ "$BATT_STATUS" = "Charging" ] && exit 0
+	
+	sudo -u $USER notify-send -u critical "Battery Low" -t 60000 \
+		"Сharge the device, or it will hibernate in 1m."
+	sleep 1m
+
+	if [ "$BATT_STATUS" = "Discharging" ]; then
+		sudo -u $USER notify-send -u critical pm-hibernate \
+			"Battery Low. Going to sleep in 3..2..1.."
+		/usr/sbin/pm-hibernate
+	fi
+fi

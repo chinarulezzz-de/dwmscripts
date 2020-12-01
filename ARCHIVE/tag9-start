@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Move to tag9
+xdotool key super+9
+
+# Set stackless layout
+xdotool key super+s
+
+# start programs
+xterm -title alsaequal -e alsamixer -D equal &
+sleep 0.5
+
+xterm -title alsamixer -e alsamixer &
+sleep 0.5
+
+xterm -title mocp -e mocp &
+sleep 0.5
+
+# Resize stackless layout
+[ "$1" = "r" ] && xdotool key super+shift+l
+
+# Move back
+xdotool key super+Tab
+
+# End of file

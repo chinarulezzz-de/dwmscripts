@@ -1,0 +1,9 @@
+#!/bin/sh
+# Make screenshots via ImageMagick
+
+OUTPUT=${OUTPUT:-$HOME/ScreenRec}
+FORMAT=$(date +%y-%m-%y-%H:%M:%S).png
+
+import -quality 100 -window root $OUTPUT/$FORMAT
+
+# End of file

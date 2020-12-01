@@ -1,0 +1,14 @@
+#!/bin/sh
+[ -z $1 ] && {
+  cat <<EOF
+$0 -- set current window urgent at the end of command execution.
+Usage: $0 <command> [args]
+EOF
+  exit 1
+}
+
+PID=`xdotool getactivewindow getwindowpid`
+$@
+xdotool search --pid $PID %1 set_window --urgency 1 2>/dev/null
+
+# End of file

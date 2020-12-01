@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Move to tag2
+xdotool key super+2
+
+# Set stackless layout
+xdotool key super+s
+
+# start programs
+xterm -title toxic-private -e toxic -t -p 127.0.0.1 9050 &
+sleep 0.5
+
+xterm -title irc -e torsocks irssi 2>/dev/null &
+sleep 0.5
+
+xterm -title rss -e newsboat &
+sleep 0.5
+
+xterm -title mail -e torsocks mutt 2>/dev/null &
+sleep 0.5
+
+# resize stackless layout
+[ "$1" = "r" ] && xdotool key super+shift+h
+
+# Move back
+xdotool key super+Tab
+
+# End of file

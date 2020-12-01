@@ -1,0 +1,6 @@
+#!/bin/sh
+pactl load-module module-bluetooth-discover
+bluetoothctl <<EOF
+power on
+connect 16:07:11:0A:4D:C9
+EOF
