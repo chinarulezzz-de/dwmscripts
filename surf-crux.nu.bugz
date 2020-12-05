@@ -1,0 +1,3 @@
+#!/bin/sh
+SITE=crux.nu/bugs
+exec torsocks surf -aA $SITE > ~/.surf.log 2>&1 &
