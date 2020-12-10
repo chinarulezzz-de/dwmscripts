@@ -1,0 +1,5 @@
+#!/bin/sh
+grep 'Alexandr Savca' --include=Pkgfile -rl /usr/ports/contrib | while read d
+do
+	echo -n "$(basename $(dirname $d)) "
+done
