@@ -1,0 +1,4 @@
+#!/bin/sh -xe
+xhost +SI:localuser:zaproxy
+sudo -u zaproxy -H zaproxy-weekly
+# End of file.

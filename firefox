@@ -1,0 +1,4 @@
+#!/bin/sh -xe
+xhost +SI:localuser:firefox
+sudo -u firefox -H firefox
+# End of file.
