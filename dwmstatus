@@ -84,7 +84,7 @@ case `hostname` in
   d311)
     disk_avail /boot boot
     separator ' '
-    disk_avail cruxvm-root root
+    disk_avail '\-root' root
     separator ' '
     disk_avail pkgmk pkgmk
     ;;
