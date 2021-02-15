@@ -1,0 +1,97 @@
+#!/bin/sh
+# vim:ft=sh:cc=80
+#
+# Status line for dwm status bar ({dragonfly,free}bsd).
+
+echo_separator() {
+	echo -n "$1$2"
+}
+
+echo_cpu_stat() {
+	uptime | awk '{printf "avg: %.2f %.2f %.2f",$(NF-2),$(NF-1),$(NF)}'
+}
+
+echo_vol_perc() {
+	mixer | awk -F: '/Mixer vol/{printf "v%s ",$2}'
+	mixer | awk -F: '/Mixer rec/{printf "r%s",$2}'
+}
+
+echo_mem_stat() {
+	top -d1 | awk '/Memory:/{
+		printf "mem: a%d i%d w%d c%d b%d f%d",
+		$2,$4,$6,$8,$10,$12
+	}'
+}
+
+echo_disk_avail() {
+	pattern=$1
+	name=$2 
+	echo -n $name`df -h | grep "$pattern" | awk '{printf "%s",$4}'`
+}
+
+echo_service() {
+	service=$1
+	name=$2
+
+	if pgrep -q ^$service$; then
+		echo -n "$name"
+		return 0
+	fi
+	return 1
+}
+
+echo_wifi_signal() {
+	iface=$1
+	ifconfig $1 list sta | awk 'NR>1{printf "%s/%s",$4,$5}'
+}
+
+echo_date() {
+	echo -n `date +'%a%d %H:%M'`
+}
+
+echo_battery() {
+	life=`sysctl -n hw.acpi.battery.life`
+	time=`sysctl -n hw.acpi.battery.time`
+	case `sysctl -n hw.acpi.battery.state` in
+		2) echo -n "chr: $life%"	;;
+		1) echo -n "bat: $life% $time"	;;
+		0) echo -n "bat: full"		;;
+		*) echo -n "bat: [!]"		;;
+	esac
+}
+
+### main
+echo_battery
+echo_separator ' |'
+echo_separator ' mix: '
+echo_vol_perc
+
+echo_separator ' | '
+echo_cpu_stat
+echo_separator ' | '
+echo_mem_stat
+
+echo_separator ' | dskfree: '
+echo_disk_avail /boot boot
+echo_separator ' '
+echo_disk_avail /dev/mapper/root root
+
+echo_separator ' | net: '
+
+echo_service tor tor &&
+echo_separator ' '
+
+echo_service dhcpcd dhcp &&
+echo_separator ' '
+
+echo_service wpa_supplicant wpa &&
+echo_separator '[' &&
+echo_wifi_signal wlan0 &&
+echo_separator ']' &&
+echo_separator ' '
+
+echo_separator '| '
+
+echo_date
+
+# End of file
