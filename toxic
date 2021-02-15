@@ -1,2 +1,2 @@
 #!/bin/sh
-exec xterm -title tox -e toxic -t -p 127.0.0.1 9050 &
+exec xterm -title tox -e /usr/bin/toxic -t -p 127.0.0.1 9050 &
