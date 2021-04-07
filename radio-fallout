@@ -1,4 +1,2 @@
 #!/bin/sh
-URL='https://www.youtube.com/watch?v=tzBGEqkwCoY'
-xterm -class FTerm -e "youtube-dl -o - $URL | mpv --no-video -" &
-# End of file
+youtube-dl -o - https://www.youtube.com/watch?v=tzBGEqkwCoY | mpv --no-video -

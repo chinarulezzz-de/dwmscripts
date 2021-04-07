@@ -1,4 +1,2 @@
 #!/bin/sh
-xterm -class FTerm -title todo.txt -e vim ~/todo.txt \
-	-c ':set foldenable' \
-	-c ':set foldmethod=indent'
+exec urxvtc -name todo.txt -e vim ~/todo.txt

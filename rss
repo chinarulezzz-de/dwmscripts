@@ -1,2 +1,2 @@
 #!/bin/sh
-xterm -title rss -e newsboat > ~/.newsboat 2>&1 &
+exec urxvtc -name rss -e newsboat

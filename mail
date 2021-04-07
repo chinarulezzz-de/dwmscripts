@@ -1,2 +1,2 @@
 #!/bin/sh
-sylpheed > ~/.sylpheed.log 2>&1 &
+exec sylpheed

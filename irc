@@ -1,2 +1,2 @@
 #!/bin/sh
-hexchat > ~/.hexchat.log 2>&1 &
+exec urxvtc -name irc -e /usr/bin/torsocks /usr/bin/irssi &
