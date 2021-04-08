@@ -1,2 +1,2 @@
 #!/bin/sh
-exec urxvtc -name mixer -e /usr/bin/alsamixer
+exec urxvtc -name mixer -e /usr/bin/alsamixer -g
