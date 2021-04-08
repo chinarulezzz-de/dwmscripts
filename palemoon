@@ -1,0 +1,3 @@
+#!/bin/sh -xe
+xhost +SI:localuser:palemoon
+sudo -u palemoon -H /usr/bin/palemoon
