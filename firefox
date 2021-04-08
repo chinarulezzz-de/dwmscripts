@@ -1,4 +1,0 @@
-#!/bin/sh -xe
-xhost +SI:localuser:firefox
-sudo -u firefox -H /usr/bin/firefox
-# End of file.
