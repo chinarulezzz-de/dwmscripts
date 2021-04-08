@@ -1,2 +1,2 @@
 #!/bin/sh
-exec urxvtc -name irc -e /usr/bin/torsocks /usr/bin/irssi &
+LD_PRELOAD=/usr/lib/torsocks/libtorsocks.so urxvtc -name irc -e irssi
