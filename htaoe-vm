@@ -1,0 +1,5 @@
+#!/bin/sh
+ISODIR="/mnt/books/en/Hacking The Art of Exploitation LiveCD ISO"
+ISO="hacking-live-1.0.iso"
+qemu-system-x86_64 -m 4G -vga virtio -enable-kvm -cdrom "$ISODIR/$ISO" -daemonize -display gtk
+# End of file.
