@@ -1,0 +1,3 @@
+#!/bin/sh
+qemu-system-x86_64 -drive format=raw,file=/mnt/vmdsk/win7.img \
+	-smp 2 -m 6G -vga virtio -enable-kvm -display gtk -daemonize
