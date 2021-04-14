@@ -1,0 +1,4 @@
+#!/bin/sh
+qemu-system-x86_64 -m 4G -vga virtio -smp 2 -enable-kvm \
+	-cdrom /mnt/vmdsk/kali64-live.iso -daemonize -display gtk
+# End of file.
