@@ -98,6 +98,7 @@ service sshd            sshd      && separator ' '
 service tor             tor       && separator ' '
 service polipo          polipo    && separator ' '
 service dhcpcd          dhcp      && separator ' '
+service sdhcp           dhcp      && separator ' '
 
 service wpa_supplicant  wpa       && separator '[' \
   && wifi_signal wlp1s0 && separator '] '
